@@ -59,7 +59,6 @@ stdenv.mkDerivation {
       [
         makeWrapper
         autoPatchelfHook
-        qt6.wrapQtAppsHook
       ]
     else
       [ ];
@@ -92,6 +91,8 @@ stdenv.mkDerivation {
     libdrm
     qt6.qtbase
   ];
+
+  dontWrapQtApps = true;
 
   # Ignore Qt5 shim, qt5webengine is unmaintained & we're using Qt6
   autoPatchelfIgnoreMissingDeps = optionals isLinux [
